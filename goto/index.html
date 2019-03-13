@@ -101,13 +101,9 @@
         document.getElementById("loader").classList.remove('shake');
         document.getElementById("loader").classList.add('explode');
         setTimeout(function() {
-          document.getElementsByTagName("body")[0].classList.add('fade')
-          setTimeout(function() {
-	    var urlParams = new URLSearchParams(window.location.search);
-	    var next = urlParams.get('next')
-            window.location.href = next
-            // document.getElementById("text").innerHTML += "... but gladely AppDynamics has your back!"
-          }, 3000)
+	  var urlParams = new URLSearchParams(window.location.search);
+	  var next = urlParams.get('next')
+          window.location.href = next
         }, 500)
       }, 1000)
     }, 4000)
