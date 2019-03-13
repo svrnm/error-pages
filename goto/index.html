@@ -1,0 +1,139 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Whoops!</title>
+  <style>
+    #content {
+      color: #fafafa;
+      font-family: sans-serif;
+      text-align: center;
+      -webkit-text-stroke: 2px black;
+      font-size: 60px;
+      font-weight: bold;
+      padding: 350px 0px;
+      background: linear-gradient( rgba(64, 64, 64, 0.2), rgba(64, 64, 64, 0.7)), url(https://upload.wikimedia.org/wikipedia/commons/8/83/Windows_Blue_Screen_on_room_full_of_computers.JPG);
+      background-position: 50% 25%;
+      width: 100%;
+    }
+
+    .hidden {
+      opacity: 0
+    }
+
+    #loader {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 1;
+      width: 150px;
+      height: 150px;
+      margin: -75px 0 0 -75px;
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+    }
+
+    .spin {
+      animation: spin 2s linear infinite;
+    }
+
+    .shake {
+      /* Start the shake animation and make the animation last for 0.5 seconds */
+      animation: shake 0.5s;
+      /* When the animation is finished, start again */
+      animation-iteration-count: infinite;
+    }
+
+    .explode {
+      transition: 0.2s;
+      opacity: 0;
+      transform: scale(5) rotate(30deg);
+    }
+
+    .fade {
+      background-color: #2e2d2f;
+      opacity: 1;
+      transition: background-color 500ms linear, opacity 1000ms linear;
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translate(1px, 1px) rotate(0deg);
+      }
+      10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+      }
+      20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+      }
+      30% {
+        transform: translate(3px, 2px) rotate(0deg);
+      }
+      40% {
+        transform: translate(1px, -1px) rotate(1deg);
+      }
+      50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+      }
+      60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+      }
+      70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+      }
+      80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+      }
+      90% {
+        transform: translate(1px, 2px) rotate(0deg);
+      }
+      100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <script>
+    setTimeout(function() {
+      document.getElementById("loader").classList.remove('spin');
+      document.getElementById("loader").classList.add('shake');
+      setTimeout(function() {
+        document.getElementById("loader").classList.remove('shake');
+        document.getElementById("loader").classList.add('explode');
+        setTimeout(function() {
+          document.getElementsByTagName("body")[0].classList.add('fade')
+          document.getElementById("content").classList.add('fade')
+          setTimeout(function() {
+	    var urlParams = new URLSearchParams(window.location.search);
+	    var next = urlParams.get('next')
+            window.location.href = next
+            // document.getElementById("text").innerHTML += "... but gladely AppDynamics has your back!"
+          }, 3000)
+        }, 500)
+      }, 1000)
+    }, 4000)
+  </script>
+</head>
+
+<body style="margin:0;padding:0">
+  <div id="loader" class="spin"></div>
+  <div id="content" class="hidden">
+    <span id="text">Whoops! This shouldn't happen...<br>&nbsp;</span>
+  </div>
+  </div>
+</body>
+
+</html>
