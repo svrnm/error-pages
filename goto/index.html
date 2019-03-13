@@ -6,19 +6,6 @@
   <meta charset="utf-8">
   <title>Whoops!</title>
   <style>
-    #content {
-      color: #fafafa;
-      font-family: sans-serif;
-      text-align: center;
-      -webkit-text-stroke: 2px black;
-      font-size: 60px;
-      font-weight: bold;
-      padding: 350px 0px;
-      background: linear-gradient( rgba(64, 64, 64, 0.2), rgba(64, 64, 64, 0.7)), url(https://upload.wikimedia.org/wikipedia/commons/8/83/Windows_Blue_Screen_on_room_full_of_computers.JPG);
-      background-position: 50% 25%;
-      width: 100%;
-    }
-
     .hidden {
       opacity: 0
     }
@@ -115,7 +102,6 @@
         document.getElementById("loader").classList.add('explode');
         setTimeout(function() {
           document.getElementsByTagName("body")[0].classList.add('fade')
-          document.getElementById("content").classList.add('fade')
           setTimeout(function() {
 	    var urlParams = new URLSearchParams(window.location.search);
 	    var next = urlParams.get('next')
@@ -130,9 +116,6 @@
 
 <body style="margin:0;padding:0">
   <div id="loader" class="spin"></div>
-  <div id="content" class="hidden">
-    <span id="text">Whoops! This shouldn't happen...<br>&nbsp;</span>
-  </div>
   </div>
 </body>
 
