@@ -94,6 +94,8 @@
     }
   </style>
   <script>
+    var urlParams = new URLSearchParams(window.location.search);
+    var timeout = urlParams.get('timeout')
     setTimeout(function() {
       document.getElementById("loader").classList.remove('spin');
       document.getElementById("loader").classList.add('shake');
@@ -101,12 +103,11 @@
         document.getElementById("loader").classList.remove('shake');
         document.getElementById("loader").classList.add('explode');
         setTimeout(function() {
-	  var urlParams = new URLSearchParams(window.location.search);
 	  var next = urlParams.get('next')
           window.location.href = next
         }, 500)
       }, 1000)
-    }, 4000)
+    }, timeout)
   </script>
 </head>
 
